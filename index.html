@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noqanchis Poliglotas - Práctica Semanal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-main: #00B953;
+      --verde-claro: #56E256;
+      --amarillo: #FFC536;
+      --magenta: #FF00FF;
+      --fondo: #F4F9F5;
+      --blanco: #FFFFFF;
+      --texto: #1E293B;
+      --texto-suave: #64748B;
+      --borde-radio: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    body {
+      background-color: var(--fondo);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .header {
+      width: 100%;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo-container {
+      background-color: var(--blanco);
+      padding: 16px 24px;
+      border-radius: var(--borde-radio);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .brand-logo-svg {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+    }
+
+    .streak-bar {
+      width: 100%;
+      background: var(--blanco);
+      padding: 12px 20px;
+      border-radius: var(--borde-radio);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border: 2px solid #E2E8F0;
+    }
+
+    .streak-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      color: #D97706;
+      background: #FEF3C7;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    .lang-tabs {
+      display: flex;
+      width: 100%;
+      max-width: 550px;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .lang-btn {
+      flex: 1;
+      padding: 12px 8px;
+      border: none;
+      border-radius: 16px;
+      background: var(--blanco);
+      color: var(--texto-suave);
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .lang-btn.active {
+      background: var(--verde-main);
+      color: var(--blanco);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 185, 83, 0.3);
+    }
+
+    .level-tabs {
+      display: flex;
+      width: 100%;
+      max-width: 550px;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .level-btn {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid #E2E8F0;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--texto-suave);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .level-btn.active {
+      border-color: var(--magenta);
+      color: var(--magenta);
+      background: #FDF2F8;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 550px;
+      background: var(--blanco);
+      border-radius: var(--borde-radio);
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border: 2px solid #F1F5F9;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background: #E2E8F0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--verde-main), var(--verde-claro));
+      transition: width 0.3s ease;
+    }
+
+    .question-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.25rem;
+      color: var(--texto);
+      line-height: 1.4;
+    }
+
+    .audio-btn {
+      background: #FEF3C7;
+      color: #B45309;
+      border: 2px solid var(--amarillo);
+      padding: 12px 20px;
+      border-radius: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      transition: transform 0.1s;
+    }
+
+    .audio-btn:active {
+      transform: scale(0.97);
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      padding: 16px;
+      border: 2px solid #E2E8F0;
+      border-radius: 16px;
+      background: var(--blanco);
+      color: var(--texto);
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover {
+      border-color: var(--verde-claro);
+      background: #F0FDF4;
+    }
+
+    .option-btn.correct {
+      background: #DCFCE7 !important;
+      border-color: var(--verde-main) !important;
+      color: #166534 !important;
+    }
+
+    .option-btn.wrong {
+      background: #FEE2E2 !important;
+      border-color: #EF4444 !important;
+      color: #991B1B !important;
+    }
+
+    .unscramble-area {
+      min-height: 60px;
+      border: 2px dashed #CBD5E1;
+      border-radius: 16px;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .word-chip {
+      background: #F1F5F9;
+      border: 2px solid #E2E8F0;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .word-chip.selected {
+      background: var(--amarillo);
+      border-color: #D97706;
+      color: #78350F;
+    }
+
+    .action-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--verde-main);
+      color: var(--blanco);
+      border: none;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 185, 83, 0.3);
+      transition: background 0.2s;
+    }
+
+    .action-btn:hover {
+      background: #009E46;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    .feedback-box {
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .feedback-box.correct {
+      display: block;
+      background: #DCFCE7;
+      color: #15803D;
+    }
+
+    .feedback-box.wrong {
+      display: block;
+      background: #FEE2E2;
+      color: #B91C1C;
+    }
+
+    .privacy-tag {
+      font-size: 0.75rem;
+      color: var(--texto-suave);
+      text-align: center;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="brand-logo-container">
+      <svg class="brand-logo-svg" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75 55C75 35.67 59.33 20 40 20C20.67 20 5 35.67 5 55C5 67.5 11.5 78.5 21.3 84.7L18 105L38.2 94.6C38.8 94.8 39.4 94.9 40 95C59.33 95 75 79.33 75 55Z" fill="#56E256"/>
+        <circle cx="26" cy="55" r="3.5" fill="#1E293B"/>
+        <circle cx="40" cy="55" r="3.5" fill="#1E293B"/>
+        <circle cx="54" cy="55" r="3.5" fill="#1E293B"/>
+        <text x="88" y="42" font-family="'Fredoka', sans-serif" font-weight="700" font-size="28" fill="#1E293B">Noqanchis</text>
+        <text x="88" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#00B953">o</text>
+        <text x="118" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#FFC536">l</text>
+        <text x="132" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#FF00FF">i</text>
+        <text x="146" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#FFC536">g</text>
+        <text x="178" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#FF00FF">l</text>
+        <text x="192" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#FFC536">o</text>
+        <text x="222" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#00B953">t</text>
+        <text x="242" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#56E256">a</text>
+        <text x="270" y="92" font-family="'Fredoka', sans-serif" font-weight="700" font-size="52" fill="#00B953">s</text>
+      </svg>
+    </div>
+
+    <div class="streak-bar">
+      <span>🔥 Racha personal:</span>
+      <div class="streak-badge" id="streakDisplay">⚡ 1 Día</div>
+    </div>
+  </header>
+
+  <nav class="lang-tabs">
+    <button class="lang-btn active" onclick="switchLang('ingles')">🇬🇧 Inglés</button>
+    <button class="lang-btn" onclick="switchLang('frances')">🇫🇷 Francés</button>
+    <button class="lang-btn" onclick="switchLang('italiano')">🇮🇹 Italiano</button>
+  </nav>
+
+  <div class="level-tabs">
+    <button class="level-btn active" onclick="switchLevel('inicial')">Nivel Inicial</button>
+    <button class="level-btn" onclick="switchLevel('intermedio')">Nivel Intermedio</button>
+  </div>
+
+  <main class="card" id="appCard">
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="exerciseContainer">
+      <p style="text-align: center; color: var(--texto-suave);">Cargando ejercicios...</p>
+    </div>
+
+    <div class="feedback-box" id="feedbackBox"></div>
+
+    <button class="action-btn" id="nextBtn" onclick="checkOrNext()" style="display:none;">Comprobar</button>
+  </main>
+
+  <p class="privacy-tag">🔒 Privacidad garantizada: Tu progreso se guarda solo en tu dispositivo.</p>
+
+  <script>
+    let bancoEjercicios = {};
+    let currentLang = 'ingles';
+    let currentLevel = 'inicial';
+    let currentIndex = 0;
+    let score = 0;
+    let selectedOption = null;
+    let selectedWords = [];
+    let isChecked = false;
+
+    const langCodes = {
+      ingles: 'en-US',
+      frances: 'fr-FR',
+      italiano: 'it-IT'
+    };
+
+    async function loadExercises() {
+      try {
+        const response = await fetch('ejercicios.json');
+        bancoEjercicios = await response.json();
+        renderExercise();
+      } catch (error) {
+        document.getElementById('exerciseContainer').innerHTML = `
+          <p style="color: red; text-align: center;">Error al cargar <b>ejercicios.json</b>.<br>Asegúrate de que el archivo esté en la misma carpeta.</p>
+        `;
+      }
+    }
+
+    function switchLang(lang) {
+      currentLang = lang;
+      currentIndex = 0;
+      score = 0;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(lang));
+      });
+      renderExercise();
+    }
+
+    function switchLevel(level) {
+      currentLevel = level;
+      currentIndex = 0;
+      score = 0;
+      document.querySelectorAll('.level-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(level));
+      });
+      renderExercise();
+    }
+
+    function playAudio(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = langCodes[currentLang];
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function renderExercise() {
+      isChecked = false;
+      selectedOption = null;
+      selectedWords = [];
+      
+      const feedbackBox = document.getElementById('feedbackBox');
+      feedbackBox.className = 'feedback-box';
+      feedbackBox.style.display = 'none';
+
+      const list = bancoEjercicios[currentLang]?.[currentLevel] || [];
+      const total = list.length;
+
+      if (total === 0) {
+        document.getElementById('exerciseContainer').innerHTML = `<p style="text-align:center;">No hay ejercicios disponibles para este nivel.</p>`;
+        document.getElementById('nextBtn').style.display = 'none';
+        return;
+      }
+
+      if (currentIndex >= total) {
+        renderResults(total);
+        return;
+      }
+
+      document.getElementById('progressBar').style.width = `${((currentIndex) / total) * 100}%`;
+      const ex = list[currentIndex];
+      const container = document.getElementById('exerciseContainer');
+      const nextBtn = document.getElementById('nextBtn');
+      nextBtn.style.display = 'block';
+      nextBtn.textContent = 'Comprobar';
+
+      if (ex.tipo === 'opcion_multiple') {
+        container.innerHTML = `
+          <h2 class="question-title">${ex.pregunta}</h2>
+          <div class="options-grid">
+            ${ex.opciones.map((opt, i) => `
+              <button class="option-btn" onclick="selectOption(${i})">${opt}</button>
+            `).join('')}
+          </div>
+        `;
+      } else if (ex.tipo === 'escucha') {
+        container.innerHTML = `
+          <h2 class="question-title">${ex.pregunta}</h2>
+          <button class="audio-btn" onclick="playAudio('${ex.audio}')">🔊 Escuchar audio</button>
+          <div class="options-grid" style="margin-top: 15px;">
+            ${ex.opciones.map((opt, i) => `
+              <button class="option-btn" onclick="selectOption(${i})">${opt}</button>
+            `).join('')}
+          </div>
+        `;
+      } else if (ex.tipo === 'desordenar') {
+        const shuffled = [...ex.palabras].sort(() => Math.random() - 0.5);
+        container.innerHTML = `
+          <h2 class="question-title">${ex.pregunta}</h2>
+          <button class="audio-btn" onclick="playAudio('${ex.audio}')">🔊 Escuchar pronunciación</button>
+          <div class="unscramble-area" id="targetArea"></div>
+          <div class="word-bank" id="wordBank">
+            ${shuffled.map((w) => `
+              <div class="word-chip" onclick="toggleWord(this, '${w}')">${w}</div>
+            `).join('')}
+          </div>
+        `;
+      }
+    }
+
+    function selectOption(index) {
+      if (isChecked) return;
+      selectedOption = index;
+      document.querySelectorAll('.option-btn').forEach((btn, i) => {
+        btn.style.borderColor = i === index ? 'var(--verde-main)' : '#E2E8F0';
+        btn.style.background = i === index ? '#F0FDF4' : 'var(--blanco)';
+      });
+    }
+
+    function toggleWord(el, word) {
+      if (isChecked) return;
+      const targetArea = document.getElementById('targetArea');
+      if (el.classList.contains('selected')) {
+        el.classList.remove('selected');
+        selectedWords = selectedWords.filter(w => w !== word);
+      } else {
+        el.classList.add('selected');
+        selectedWords.push(word);
+      }
+      targetArea.innerHTML = selectedWords.map(w => `<span class="word-chip">${w}</span>`).join('');
+    }
+
+    function checkOrNext() {
+      const list = bancoEjercicios[currentLang][currentLevel];
+      const ex = list[currentIndex];
+      const feedbackBox = document.getElementById('feedbackBox');
+      const nextBtn = document.getElementById('nextBtn');
+
+      if (!isChecked) {
+        let isCorrect = false;
+
+        if (ex.tipo === 'opcion_multiple' || ex.tipo === 'escucha') {
+          if (selectedOption === null) return;
+          isCorrect = selectedOption === ex.correcta;
+          document.querySelectorAll('.option-btn').forEach((btn, i) => {
+            if (i === ex.correcta) btn.classList.add('correct');
+            if (i === selectedOption && !isCorrect) btn.classList.add('wrong');
+          });
+        } else if (ex.tipo === 'desordenar') {
+          isCorrect = selectedWords.join(' ') === ex.palabras.join(' ');
+        }
+
+        isChecked = true;
+        if (isCorrect) {
+          score++;
+          feedbackBox.textContent = "¡Excelente! Respuesta correcta 🎉";
+          feedbackBox.className = "feedback-box correct";
+        } else {
+          feedbackBox.textContent = "¡Casi! Revisa la opción correcta arriba.";
+          feedbackBox.className = "feedback-box wrong";
+        }
+
+        nextBtn.textContent = 'Siguiente ejercicio ➔';
+      } else {
+        currentIndex++;
+        renderExercise();
+      }
+    }
+
+    function renderResults(total) {
+      document.getElementById('progressBar').style.width = '100%';
+      const porcentaje = Math.round((score / total) * 100);
+      const msg = `¡Hola Profe! Completé el reto de ${currentLang.toUpperCase()} (${currentLevel}) en Noqanchis Poliglotas con un puntaje de ${score}/${total} (${porcentaje}%).`;
+      const waUrl = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+
+      document.getElementById('exerciseContainer').innerHTML = `
+        <div style="text-align: center; display: flex; flex-direction: column; gap: 15px;">
+          <h2 style="font-family:'Fredoka'; font-size: 2rem; color: var(--verde-main);">¡Reto Completado! 🏆</h2>
+          <p style="font-size: 1.2rem; font-weight: 700;">Obtuviste ${score} de ${total} respuestas correctas (${porcentaje}%).</p>
+          <a href="${waUrl}" target="_blank" class="whatsapp-btn">
+            📲 Enviar resultado a mi Profe por WhatsApp
+          </a>
+        </div>
+      `;
+      document.getElementById('nextBtn').style.display = 'none';
+    }
+
+    loadExercises();
+  </script>
+</body>
+</html>

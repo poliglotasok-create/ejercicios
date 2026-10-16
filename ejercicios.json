@@ -1,0 +1,91 @@
+{
+  "ingles": {
+    "inicial": [
+      {
+        "tipo": "opcion_multiple",
+        "pregunta": "¿Cómo se dice 'Tengo hambre' en inglés?",
+        "opciones": ["I am hungry", "I have hungry", "I am cold"],
+        "correcta": 0
+      },
+      {
+        "tipo": "escucha",
+        "audio": "How are you doing today?",
+        "pregunta": "Escucha el audio y selecciona el significado en español:",
+        "opciones": ["¿Qué estás comiendo hoy?", "¿Cómo estás hoy?", "¿A dónde vas hoy?"],
+        "correcta": 1
+      },
+      {
+        "tipo": "desordenar",
+        "audio": "I would like a cup of coffee please",
+        "pregunta": "Ordena las palabras para formar la oración correcta:",
+        "palabras": ["I", "would", "like", "a", "cup", "of", "coffee", "please"]
+      }
+    ],
+    "intermedio": [
+      {
+        "tipo": "opcion_multiple",
+        "pregunta": "Selecciona la forma correcta en Pasado Continuo:",
+        "opciones": [
+          "Yesterday at 5 PM, I was studying English.",
+          "Yesterday at 5 PM, I am study English.",
+          "Yesterday at 5 PM, I studied Englishing."
+        ],
+        "correcta": 0
+      },
+      {
+        "tipo": "desordenar",
+        "audio": "If it rains tomorrow we will stay at home",
+        "pregunta": "Ordena este condicional tipo 1:",
+        "palabras": ["If", "it", "rains", "tomorrow", "we", "will", "stay", "at", "home"]
+      }
+    ]
+  },
+  "frances": {
+    "inicial": [
+      {
+        "tipo": "opcion_multiple",
+        "pregunta": "¿Cómo se dice 'Buenos días / Hola' por la mañana?",
+        "opciones": ["Bonsoir", "Bonjour", "Bonne nuit"],
+        "correcta": 1
+      },
+      {
+        "tipo": "desordenar",
+        "audio": "Je voudrais un croissant s'il vous plaît",
+        "pregunta": "Ordena la frase para pedir en una panadería:",
+        "palabras": ["Je", "voudrais", "un", "croissant", "s'il", "vous", "plaît"]
+      }
+    ],
+    "intermedio": [
+      {
+        "tipo": "opcion_multiple",
+        "pregunta": "¿Cuál es el participio pasado correcto del verbo 'pouvoir'?",
+        "opciones": ["Pouvu", "Pu", "Pouvait"],
+        "correcta": 1
+      }
+    ]
+  },
+  "italiano": {
+    "inicial": [
+      {
+        "tipo": "opcion_multiple",
+        "pregunta": "¿Cómo se responde a 'Grazie' en italiano?",
+        "opciones": ["Prego", "Per favore", "Ciao"],
+        "correcta": 0
+      },
+      {
+        "tipo": "desordenar",
+        "audio": "Vorrei un gelato al cioccolato per favore",
+        "pregunta": "Ordena la frase para pedir un helado:",
+        "palabras": ["Vorrei", "un", "gelato", "al", "cioccolato", "per", "favore"]
+      }
+    ],
+    "intermedio": [
+      {
+        "tipo": "opcion_multiple",
+        "pregunta": "Selecciona la preposición articulada correcta: 'Vado ___ supermercato'.",
+        "opciones": ["al", "nel", "sul"],
+        "correcta": 0
+      }
+    ]
+  }
+}

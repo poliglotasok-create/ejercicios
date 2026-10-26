@@ -5,13 +5,13 @@
         "tipo": "opcion_multiple",
         "pregunta": "¿Cómo se dice 'Leer' en inglés?",
         "opciones": ["Swim", "Write", "Read"],
-        "correcta": 0
+        "correcta": 3
       },
       {
         "tipo": "opcion_multiple",
-        "pregunta": "¿Cómo se dice 'Leer' en inglés?",
+        "pregunta": "¿Cómo se dice 'Comer' en inglés?",
         "opciones": ["Drink", "Eat", "Run"],
-        "correcta": 1
+        "correcta": 2
       },
       {
         "tipo": "desordenar",
@@ -29,7 +29,7 @@
           "Can´t You run?",
           "Can You run?."
         ],
-        "correcta": 0
+        "correcta": 3
       },
       {
         "tipo": "desordenar",

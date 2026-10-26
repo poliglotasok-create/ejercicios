@@ -3,40 +3,39 @@
     "inicial": [
       {
         "tipo": "opcion_multiple",
-        "pregunta": "¿Cómo se dice 'Tengo hambre' en inglés?",
-        "opciones": ["I am hungry", "I have hungry", "I am cold"],
+        "pregunta": "¿Cómo se dice 'Leer' en inglés?",
+        "opciones": ["Swim", "Write", "Read"],
         "correcta": 0
       },
       {
-        "tipo": "escucha",
-        "audio": "How are you doing today?",
-        "pregunta": "Escucha el audio y selecciona el significado en español:",
-        "opciones": ["¿Qué estás comiendo hoy?", "¿Cómo estás hoy?", "¿A dónde vas hoy?"],
+        "tipo": "opcion_multiple",
+        "pregunta": "¿Cómo se dice "comer" en inglés?",
+        "opciones": ["Drink", "Eat", "Run"],
         "correcta": 1
       },
       {
         "tipo": "desordenar",
-        "audio": "I would like a cup of coffee please",
+        "audio": "I can read a book",
         "pregunta": "Ordena las palabras para formar la oración correcta:",
-        "palabras": ["I", "would", "like", "a", "cup", "of", "coffee", "please"]
+        "palabras": ["I", "can", "read", "a", "book", "of"]
       }
     ],
     "intermedio": [
       {
         "tipo": "opcion_multiple",
-        "pregunta": "Selecciona la forma correcta en Pasado Continuo:",
+        "pregunta": "Selecciona la forma correcta de una pregunta:",
         "opciones": [
-          "Yesterday at 5 PM, I was studying English.",
-          "Yesterday at 5 PM, I am study English.",
-          "Yesterday at 5 PM, I studied Englishing."
+          "You can´t run",
+          "Can´t You run?",
+          "Can You run?."
         ],
         "correcta": 0
       },
       {
         "tipo": "desordenar",
-        "audio": "If it rains tomorrow we will stay at home",
-        "pregunta": "Ordena este condicional tipo 1:",
-        "palabras": ["If", "it", "rains", "tomorrow", "we", "will", "stay", "at", "home"]
+        "audio": "She can speak english",
+        "pregunta": "Ordena esta oración positiva:",
+        "palabras": ["She", "can", "speak", "English"]
       }
     ]
   },

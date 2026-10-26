@@ -9,7 +9,7 @@
       },
       {
         "tipo": "opcion_multiple",
-        "pregunta": "¿Cómo se dice "comer" en inglés?",
+        "pregunta": "¿Cómo se dice 'Leer' en inglés?",
         "opciones": ["Drink", "Eat", "Run"],
         "correcta": 1
       },
